@@ -338,6 +338,37 @@ code,
   background: rgba(5, 6, 13, 0.42) !important;
 }
 
+.diagram-card,
+.diagram-step,
+.architecture-notes article {
+  border: 1px solid var(--case-line) !important;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.055), transparent 48%),
+    rgba(8, 10, 22, 0.82) !important;
+  color: var(--case-text) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+.diagram-card {
+  background:
+    radial-gradient(circle at 24% 18%, rgba(127, 231, 217, 0.1), transparent 18rem),
+    rgba(7, 9, 20, 0.72) !important;
+}
+
+.diagram-step {
+  border-radius: 8px !important;
+}
+
+.diagram-step div,
+.architecture-notes p {
+  color: var(--case-muted) !important;
+}
+
+.diagram-arrow {
+  background: linear-gradient(180deg, var(--case-accent), rgba(127, 231, 217, 0.28)) !important;
+  opacity: 0.78;
+}
+
 ::selection {
   background: rgba(188, 168, 255, 0.34);
 }
