@@ -16,5 +16,8 @@
     "react": "latest",
     "react-dom": "latest",
     "vite": "latest"
+  },
+  "devDependencies": {
+    "wrangler": "^4.103.0"
   }
 }

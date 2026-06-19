@@ -5,3 +5,4 @@ dist/
 *.local
 source-assets/
 GitHubDesktopSetup-x64.exe
+.wrangler-config/
