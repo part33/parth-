@@ -12,7 +12,7 @@
   nav.className = 'case-theme-nav';
   nav.setAttribute('aria-label', '案例页导航');
   nav.innerHTML = `
-    <a class="case-theme-home" href="/#projects">返回主页</a>
+    <a class="case-theme-home" href="../#projects">返回主页</a>
     <span class="case-theme-title">PARTH / CASE STUDY</span>
     <a class="case-theme-contact" href="mailto:3271408034@qq.com">联系</a>
   `;

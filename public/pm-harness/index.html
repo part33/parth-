@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PM Harness Portfolio Case Study</title>
+  <title>PM Harness | AI Product Workflow Case</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -20,42 +20,31 @@
           <span class="brand-text">Harness</span>
         </div>
         <div class="nav-links">
-          <a href="#links">项目</a>
           <a href="#overview">概述</a>
-          <a href="#framework">框架</a>
+          <a href="#architecture">架构</a>
           <a href="#workflow">流程</a>
           <a href="#artifacts">产出</a>
+          <a href="#value">价值</a>
         </div>
       </nav>
 
       <section class="hero-grid" id="overview">
         <div class="hero-copy">
           <p class="eyebrow">AI Product Manager Workflow</p>
-          <h1>模糊想法→可交接产品文档</h1>
+          <h1>PM Harness</h1>
           <p class="hero-summary">
-            PM Harness 是一套面向 AI 产品经理工作的 harness。
-            它不是单次 PRD 生成 prompt，而是一套由阶段路由、范围控制、
-            独立评审和决策留痕组成的产品定义工作流。
+            一个面向 AI 产品定义阶段的工作流框架：把模糊想法拆成可评审、可追踪、可交接的产品文档。
+            重点不是“生成一份 PRD”，而是控制需求澄清、范围收敛、独立评审和交接标准。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#framework">查看框架</a>
-            <a class="button secondary" href="#demo">查看示例流程</a>
-          </div>
-          <div class="hero-entry-strip">
-            <a class="entry-pill" href="#links">
-              <span class="entry-label">项目入口</span>
-              <span class="entry-value">GitHub 仓库 + 关键文件</span>
-            </a>
-            <a class="entry-pill" href="HARNESS.md" target="_blank" rel="noreferrer">
-              <span class="entry-label">关键文档</span>
-              <span class="entry-value">先看 HARNESS.md</span>
-            </a>
+            <a class="button primary" href="#architecture">查看架构</a>
+            <a class="button secondary" href="HARNESS.md" target="_blank" rel="noreferrer">打开 HARNESS.md</a>
           </div>
           <ul class="hero-tags">
+            <li>AI Product</li>
             <li>Harness Design</li>
-            <li>AI Workflow</li>
-            <li>Product Strategy</li>
-            <li>Portfolio Project</li>
+            <li>Workflow Control</li>
+            <li>Product Spec</li>
           </ul>
         </div>
 
@@ -64,24 +53,24 @@
           <div class="metric-grid">
             <article>
               <span class="metric-number">6</span>
-              <span class="metric-label">阶段 Skill</span>
-            </article>
-            <article>
-              <span class="metric-number">1</span>
-              <span class="metric-label">总控 Harness</span>
+              <span class="metric-label">阶段模块</span>
             </article>
             <article>
               <span class="metric-number">3</span>
-              <span class="metric-label">核心门禁</span>
+              <span class="metric-label">质量门禁</span>
             </article>
             <article>
               <span class="metric-number">4</span>
-              <span class="metric-label">关键文档</span>
+              <span class="metric-label">核心文档</span>
+            </article>
+            <article>
+              <span class="metric-number">1</span>
+              <span class="metric-label">总控规则</span>
             </article>
           </div>
           <div class="panel-note">
-            <p>目标不是“更快写一份 PRD”。</p>
-            <p>目标是让 AI 的产品输出更可评审、更有边界、更适合交接给下一阶段。</p>
+            <p>定位：AI 产品经理前期定义工具</p>
+            <p>目标：减少需求发散，提升文档可执行性</p>
           </div>
         </aside>
       </section>
@@ -91,34 +80,33 @@
       <section class="section links-section" id="links">
         <div class="section-heading">
           <p class="eyebrow">Project Links</p>
-          <h2>项目入口与关键文档</h2>
+          <h2>项目入口</h2>
         </div>
         <div class="links-layout">
           <article class="repo-card">
             <p class="eyebrow small">Main Entry</p>
-            <h3>GitHub 仓库入口</h3>
+            <h3>GitHub 仓库</h3>
             <p>
-              这里作为项目主入口，方便继续查看 README、文件结构、关键文档和版本记录，
-              了解这个 Harness 项目的完整组成。
+              项目以文档和规则文件为核心，展示如何把产品定义流程拆成可复用的阶段模块。
             </p>
             <a class="button secondary" href="https://github.com/part33/-skill" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
           </article>
           <div class="artifact-links">
             <a class="doc-link" href="HARNESS.md" target="_blank" rel="noreferrer">
               <span class="doc-name">HARNESS.md</span>
-              <span class="doc-desc">总控规则、阶段路由与门禁规则</span>
+              <span class="doc-desc">总控规则：阶段路由、输入输出、门禁标准</span>
             </a>
             <a class="doc-link" href="Product-Spec.md" target="_blank" rel="noreferrer">
               <span class="doc-name">Product-Spec.md</span>
-              <span class="doc-desc">核心产品文档，说明定位、范围和流程</span>
+              <span class="doc-desc">产品定义：用户、场景、范围、功能和成功标准</span>
             </a>
             <a class="doc-link" href="PM-Decision-Log.md" target="_blank" rel="noreferrer">
               <span class="doc-name">PM-Decision-Log.md</span>
-              <span class="doc-desc">记录为什么删功能、为什么收窄用户</span>
+              <span class="doc-desc">决策记录：记录删减、收窄和取舍依据</span>
             </a>
             <a class="doc-link" href="Handoff-Goals.md" target="_blank" rel="noreferrer">
               <span class="doc-name">Handoff-Goals.md</span>
-              <span class="doc-desc">把评审通过的文档转成下一阶段目标</span>
+              <span class="doc-desc">交接目标：把文档转成下一阶段可执行目标</span>
             </a>
           </div>
         </div>
@@ -126,147 +114,142 @@
 
       <section class="section story">
         <div class="section-heading">
-          <p class="eyebrow">Problem</p>
-          <h2>设计原因</h2>
+          <p class="eyebrow">Problem Definition</p>
+          <h2>要解决的问题</h2>
         </div>
         <div class="story-grid">
           <article class="story-card accent">
-            <h3>我观察到的问题</h3>
+            <h3>AI 能写文档，但不一定能控产品</h3>
             <p>
-              很多 AI 文档工具能快速生成看起来完整的 PRD，但在设计上欠缺需求澄清、
-              MVP 收敛、独立评审和交接定义。结果是文档很快生成，却很难真正用于设计或开发。
+              单次生成式 prompt 容易产出“看起来完整”的 PRD，但需求边界、用户价值和 MVP 范围常常没有被真正验证。
             </p>
           </article>
           <article class="story-card">
-            <h3>真正缺的不是生成速度</h3>
+            <h3>主要风险</h3>
             <ul>
-              <li>产品定位不清，功能开始堆叠。</li>
-              <li>目标用户模糊，用户价值无法验证。</li>
-              <li>MVP 范围失控，第一版什么都想做。</li>
-              <li>文档缺少独立评审，错误一路被带入后续阶段。</li>
+              <li>目标用户和使用场景模糊。</li>
+              <li>第一版范围过大，功能堆叠。</li>
+              <li>文档缺少评审，模糊描述被直接交接。</li>
+              <li>关键取舍没有记录，后续难复盘。</li>
             </ul>
           </article>
           <article class="story-card">
-            <h3>所以我设计了什么</h3>
+            <h3>我的解决方式</h3>
             <p>
-              我把这个问题定义成一个 workflow 设计问题，而不是 prompt 优化问题。
-              PM Harness 的重点在于结构、路由、门禁和回退机制。
+              把 AI 产品定义拆成阶段化工作流，用 Harness 负责路由、门禁和回退，而不是只依赖一个“万能 PRD prompt”。
             </p>
           </article>
         </div>
       </section>
 
-      <section class="section framework" id="framework">
+      <section class="section architecture" id="architecture">
         <div class="section-heading">
-          <p class="eyebrow">Framework</p>
-          <h2>六个 Skill，一条受控工作流</h2>
+          <p class="eyebrow">Architecture</p>
+          <h2>Harness 架构</h2>
+        </div>
+        <div class="architecture-layout">
+          <div class="diagram-card">
+            <div class="diagram-step">Input<div>一句模糊想法、业务方向或产品机会</div></div>
+            <div class="diagram-arrow"></div>
+            <div class="diagram-step">Clarify<div>澄清用户、场景、痛点和目标</div></div>
+            <div class="diagram-arrow"></div>
+            <div class="diagram-step">Scope<div>收敛 MVP，明确做/不做/后置</div></div>
+            <div class="diagram-arrow"></div>
+            <div class="diagram-step">Build Spec<div>生成结构化 Product Spec</div></div>
+            <div class="diagram-arrow"></div>
+            <div class="diagram-step">Review Gate<div>独立评审模糊项、冲突项、不可执行项</div></div>
+            <div class="diagram-arrow"></div>
+            <div class="diagram-step">Handoff<div>输出下一阶段目标和交接说明</div></div>
+          </div>
+          <div class="architecture-notes">
+            <article>
+              <h3>Skill 负责能力</h3>
+              <p>每个 Skill 处理一个明确任务，如澄清、收敛、写文档或审查。</p>
+            </article>
+            <article>
+              <h3>Harness 负责控制</h3>
+              <p>决定阶段顺序、是否允许进入下一步、哪些信息必须补齐。</p>
+            </article>
+            <article>
+              <h3>文档负责沉淀</h3>
+              <p>用 Spec、Decision Log 和 Handoff Goals 让产品判断可复查、可交接。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section framework">
+        <div class="section-heading">
+          <p class="eyebrow">Modules</p>
+          <h2>六个阶段模块</h2>
         </div>
         <div class="framework-grid">
           <article class="skill-card">
             <span>01</span>
             <h3>Idea Clarifier</h3>
-            <p>先问清楚产品是什么、给谁用、解决什么问题。</p>
+            <p>把想法转成用户、场景、问题和目标。</p>
           </article>
           <article class="skill-card">
             <span>02</span>
             <h3>Market Scoper</h3>
-            <p>判断用户当前替代方案，以及这个产品为什么值得存在。</p>
+            <p>判断替代方案和产品存在价值。</p>
           </article>
           <article class="skill-card">
             <span>03</span>
             <h3>MVP Definer</h3>
-            <p>控制第一版范围，明确必须做、可延期和本次不做。</p>
+            <p>控制第一版范围，避免功能膨胀。</p>
           </article>
           <article class="skill-card">
             <span>04</span>
             <h3>Spec Builder</h3>
-            <p>把前面收敛好的信息整理成结构化 Product Spec。</p>
+            <p>输出结构化 Product Spec。</p>
           </article>
           <article class="skill-card">
             <span>05</span>
             <h3>Spec Reviewer</h3>
-            <p>作为独立质量闸门，识别模糊项、矛盾项和不可执行项。</p>
+            <p>独立检查模糊、矛盾和不可执行项。</p>
           </article>
           <article class="skill-card">
             <span>06</span>
             <h3>Goal Writer</h3>
-            <p>将通过评审的文档转化为下一阶段的明确交接目标。</p>
+            <p>把评审后的文档转为交接目标。</p>
           </article>
-        </div>
-      </section>
-
-      <section class="section architecture">
-        <div class="section-heading">
-          <p class="eyebrow">Architecture</p>
-          <h2>它为什么是Harness，而不是Skill集合</h2>
-        </div>
-        <div class="architecture-layout">
-          <div class="diagram-card">
-            <div class="diagram-step">HARNESS.md<div>定义阶段、路由规则、门禁规则</div></div>
-            <div class="diagram-arrow"></div>
-            <div class="diagram-step">Skills<div>提供每个阶段的能力模块</div></div>
-            <div class="diagram-arrow"></div>
-            <div class="diagram-step">Review Gate<div>独立评审，不让错误直接流入下一阶段</div></div>
-            <div class="diagram-arrow"></div>
-            <div class="diagram-step">Decision Log<div>关键取舍可追溯、可复盘</div></div>
-            <div class="diagram-arrow"></div>
-            <div class="diagram-step">Handoff Goal<div>文档通过后进入下一阶段执行</div></div>
-          </div>
-          <div class="architecture-notes">
-            <article>
-              <h3>Skill 负责能力</h3>
-              <p>回答“会做什么”。比如澄清需求、缩小范围、生成文档。</p>
-            </article>
-            <article>
-              <h3>Harness 负责结构</h3>
-              <p>回答“什么时候做、做到什么程度、谁来审、不能越过哪些门禁”。</p>
-            </article>
-            <article>
-              <h3>设计重点</h3>
-              <p>不是让 AI 多写，而是让 AI 的产品输出更稳定、更有边界、更适合交接。</p>
-            </article>
-          </div>
         </div>
       </section>
 
       <section class="section workflow" id="workflow">
         <div class="section-heading">
-          <p class="eyebrow">Demo Flow</p>
-          <h2>案例</h2>
+          <p class="eyebrow">Workflow</p>
+          <h2>运行逻辑</h2>
         </div>
-        <div class="workflow-shell" id="demo">
+        <div class="workflow-shell">
           <div class="workflow-intro">
-            <p class="workflow-label">Scenario</p>
-            <h3>AI 短视频改稿工具</h3>
+            <p class="workflow-label">Operating Principle</p>
+            <h3>先收敛，再生成；先评审，再交接。</h3>
             <p>
-              原始输入是：“我想做一个帮助短视频创作者自动改稿的 AI 工具。”
-              系统不会直接写 PRD，而是先收敛用户和痛点，再判断范围。
+              这套流程把 AI 从“内容生成器”限制为“按阶段推进的产品协作者”，每一步都有明确输入、输出和完成标准。
             </p>
           </div>
           <ol class="timeline">
             <li>
-              <h4>Step 1 · 澄清需求</h4>
-              <p>明确目标用户是口播型短视频创作者，核心痛点是人工删废话、压缩节奏太耗时。</p>
+              <h4>1 · Clarify</h4>
+              <p>不直接写 PRD，先补齐用户、场景、问题和目标。</p>
             </li>
             <li>
-              <h4>Step 2 · 判断替代方案</h4>
-              <p>分析用户当前 workaround：手工改稿、找剪辑师、用通用文本工具辅助。</p>
+              <h4>2 · Scope</h4>
+              <p>区分必须做、可以后置、本轮不做，控制 MVP。</p>
             </li>
             <li>
-              <h4>Step 3 · 收敛 MVP</h4>
-              <p>第一版只做三件事：压缩口播稿、删除废话、提炼节奏，不碰复杂协作和素材管理。</p>
+              <h4>3 · Build</h4>
+              <p>把收敛后的信息整理成结构化产品文档。</p>
             </li>
             <li>
-              <h4>Step 4 · 生成 Spec</h4>
-              <p>输出结构化 Product Spec，包含用户、范围、流程、功能和成功标准。</p>
+              <h4>4 · Review</h4>
+              <p>独立评审文档质量，修正模糊和不可执行表达。</p>
             </li>
             <li>
-              <h4>Step 5 · 独立评审</h4>
-              <p>检查“提升表达效果”这类空泛描述，强制改成可执行、可评审的具体定义。</p>
-            </li>
-            <li>
-              <h4>Step 6 · 输出交接目标</h4>
-              <p>把最终文档转化成设计或开发阶段的明确 handoff goal，而不是一句“继续推进”。</p>
+              <h4>5 · Handoff</h4>
+              <p>把通过评审的 Spec 转成下一阶段可执行目标。</p>
             </li>
           </ol>
         </div>
@@ -275,45 +258,45 @@
       <section class="section artifacts" id="artifacts">
         <div class="section-heading">
           <p class="eyebrow">Artifacts</p>
-          <h2>四份文档，分别控制不同层面的质量</h2>
+          <h2>核心产出</h2>
         </div>
         <div class="artifact-grid">
           <article class="artifact-card">
             <h3>HARNESS.md</h3>
-            <p>总控规则文件，负责角色定义、阶段路由、门禁与输出标准。</p>
+            <p>总控规则，定义阶段顺序和门禁。</p>
           </article>
           <article class="artifact-card">
             <h3>Product-Spec.md</h3>
-            <p>核心产出文件，沉淀结构化产品文档，而不是只堆功能点。</p>
+            <p>产品定义，承载最终可交接文档。</p>
           </article>
           <article class="artifact-card">
             <h3>PM-Decision-Log.md</h3>
-            <p>记录为什么删功能、为什么收窄用户、为什么改变主流程。</p>
+            <p>决策记录，保留范围取舍依据。</p>
           </article>
           <article class="artifact-card">
             <h3>Handoff-Goals.md</h3>
-            <p>将通过评审的文档转为下一阶段可执行、可验证的目标。</p>
+            <p>交接目标，连接设计或开发阶段。</p>
           </article>
         </div>
       </section>
 
-      <section class="section takeaway">
+      <section class="section takeaway" id="value">
         <div class="section-heading">
-          <p class="eyebrow">Takeaway</p>
-          <h2>反思</h2>
+          <p class="eyebrow">Value</p>
+          <h2>体现的产品能力</h2>
         </div>
         <div class="takeaway-grid">
           <article>
-            <h3>AI 输出质量很多时候是流程设计问题</h3>
-            <p>如果没有阶段控制、范围判断和独立评审，再强的模型也会很快地产出一份站不住的文档。</p>
+            <h3>流程抽象</h3>
+            <p>把非结构化产品思考拆成可执行阶段和规则。</p>
           </article>
           <article>
-            <h3>“谁来审查”跟“怎么生成”一样重要</h3>
-            <p>把 builder 和 reviewer 拆开，是这个项目最关键的质量设计之一。</p>
+            <h3>范围控制</h3>
+            <p>通过 MVP 和门禁机制防止功能膨胀。</p>
           </article>
           <article>
-            <h3>好 Harness 管的不是步骤，而是完成标准</h3>
-            <p>我不希望系统被死流程压住上限，我更希望它在必要节点被清楚的门禁管住方向。</p>
+            <h3>质量意识</h3>
+            <p>把评审、留痕和交接作为 AI 产品工作流的一部分。</p>
           </article>
         </div>
       </section>

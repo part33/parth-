@@ -30,14 +30,9 @@ html {
 
 body {
   margin: 0;
-  min-width: 1180px;
   background:
     radial-gradient(circle at 50% 0%, rgba(130, 116, 255, 0.2), transparent 38rem),
     linear-gradient(180deg, #05060d 0%, #080813 54%, #03040a 100%);
-}
-
-body.isOpening {
-  overflow: hidden;
 }
 
 a {
@@ -155,15 +150,16 @@ video {
   pointer-events: none;
 }
 
-.heroVideo {
+.heroBackground {
   position: absolute;
   inset: 0;
   z-index: -4;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   opacity: 0.78;
   filter: saturate(0.82) contrast(1.06) brightness(0.96);
+  background: url("/hero-terrain-reference.png") center / cover no-repeat;
+  transform: scale(1.02);
 }
 
 .heroShade {
@@ -207,15 +203,6 @@ video {
     box-shadow 220ms ease,
     min-height 220ms ease,
     padding 220ms ease;
-}
-
-.siteHeader.isFloating {
-  background: rgba(9, 9, 18, 0.58);
-  backdrop-filter: blur(24px) saturate(1.25);
-  -webkit-backdrop-filter: blur(24px) saturate(1.25);
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .brand {
@@ -302,7 +289,6 @@ nav a:hover {
   text-align: left;
 }
 
-.eyebrow,
 .sectionKicker {
   margin: 0 0 24px;
   color: var(--accent);
@@ -451,7 +437,7 @@ h1 span {
   isolation: isolate;
 }
 
-.galaxyBackdrop {
+.staticBackdrop {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -459,10 +445,23 @@ h1 span {
   pointer-events: none;
 }
 
-.galaxyBackdrop::after {
+.staticBackdrop::before,
+.staticBackdrop::after {
   content: "";
   position: absolute;
   inset: 0;
+}
+
+.staticBackdrop::before {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(188, 168, 255, 0.1), transparent 24rem),
+    radial-gradient(circle at 86% 28%, rgba(127, 231, 217, 0.055), transparent 28rem),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: auto, auto, 96px 96px, 96px 96px;
+}
+
+.staticBackdrop::after {
   background:
     linear-gradient(180deg, rgba(5, 6, 13, 0.52), rgba(5, 6, 13, 0.26) 34%, rgba(5, 6, 13, 0.7) 100%),
     radial-gradient(circle at 50% 20%, rgba(188, 168, 255, 0.08), transparent 30rem);
@@ -629,13 +628,6 @@ h1 span {
   background: transparent;
 }
 
-.twoColumn {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 86px;
-  align-items: center;
-}
-
 .portraitPanel {
   position: relative;
   height: 330px;
@@ -649,29 +641,12 @@ h1 span {
 
 .portraitPanel img {
   width: 100%;
-  height: 112%;
+  height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center;
-  will-change: transform;
 }
 
-.portraitCaption {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid var(--line);
-  background: rgba(3, 7, 9, 0.72);
-  padding: 12px 14px;
-  color: var(--muted);
-  font-size: 14px;
-  backdrop-filter: blur(14px);
-}
-
-.aboutContent h2,
 .sectionHead h2,
 .contactEnd h2 {
   max-width: 980px;
@@ -682,7 +657,6 @@ h1 span {
   letter-spacing: 0;
 }
 
-.aboutContent > p:not(.sectionKicker),
 .sectionHead > p:not(.sectionKicker),
 .contactEndInner > p:not(.sectionKicker) {
   max-width: 870px;
@@ -940,7 +914,7 @@ h1 span {
 
 .projectImage img {
   width: 100%;
-  height: 112%;
+  height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center;
@@ -987,62 +961,66 @@ h1 span {
   font-weight: 800;
 }
 
+.overviewGrid {
+  width: min(980px, 100%);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.compactProjectCard .projectImage {
+  aspect-ratio: 1.72;
+}
+
+.compactProjectCard .projectBody {
+  min-height: 190px;
+  padding: 20px 18px 18px;
+}
+
+.compactProjectCard .projectBody h3 {
+  margin: 14px 0 10px;
+  font-size: 22px;
+  line-height: 1.18;
+}
+
+.compactProjectCard .projectBody p {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.58;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.compactProjectCard .projectBody .projectLink {
+  font-size: 14px;
+}
+
 .projectAbout {
-  display: grid;
-  grid-template-columns: 1fr 440px;
-  gap: 110px;
-  align-items: end;
-  margin-top: 210px;
+  display: block;
+  width: min(520px, 46vw);
+  margin: 122px 0 0 auto;
+  text-align: right;
 }
 
 .projectAbout h3 {
-  max-width: 720px;
-  margin-bottom: 18px;
+  max-width: none;
+  margin-bottom: 12px;
   color: var(--text);
-  font-size: 56px;
-  line-height: 1.08;
+  font-size: 24px;
+  line-height: 1.18;
   letter-spacing: 0;
 }
 
 .projectAbout p:not(.sectionKicker) {
-  max-width: 730px;
+  max-width: none;
   color: var(--muted);
-  font-size: 18px;
-  font-weight: 650;
-  line-height: 1.7;
-}
-
-.projectStats {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(12, 11, 24, 0.72);
-}
-
-.projectStats div {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: center;
-  min-height: 104px;
-  padding: 0 30px;
-  border-bottom: 1px solid var(--line);
-}
-
-.projectStats div:last-child {
-  border-bottom: 0;
-}
-
-.projectStats span {
-  color: var(--faint);
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
+  line-height: 1.72;
 }
 
-.projectStats strong {
-  color: var(--text);
-  font-size: 42px;
-  line-height: 1;
+.projectAbout .sectionKicker {
+  margin-bottom: 10px;
 }
 
 .strengths {
@@ -1090,19 +1068,34 @@ h1 span {
 .contactEnd {
   display: flex;
   min-height: 100vh;
+  scroll-margin-top: 112px;
+  padding: 122px 0;
   align-items: center;
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    radial-gradient(circle at 50% 46%, rgba(188, 168, 255, 0.08), transparent 33rem),
-    linear-gradient(180deg, rgba(5, 6, 13, 0.58), rgba(5, 6, 13, 0.44));
+    linear-gradient(180deg, rgba(5, 4, 13, 0.68), rgba(5, 4, 13, 0.84) 60%, rgba(5, 4, 13, 0.93)),
+    radial-gradient(circle at 50% 42%, rgba(188, 168, 255, 0.16), transparent 31rem),
+    linear-gradient(90deg, rgba(10, 5, 22, 0.68), rgba(10, 5, 22, 0.34) 48%, rgba(10, 5, 22, 0.72)),
+    url("/contact-coast-bg.png") center / cover no-repeat;
   background-size:
-    90px 90px,
-    90px 90px,
     auto,
-    auto;
+    auto,
+    auto,
+    cover;
+}
+
+.contactEnd::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 92px 92px;
+  opacity: 0.28;
+  pointer-events: none;
 }
 
 .contactEndInner {
@@ -1115,18 +1108,6 @@ h1 span {
   color: rgba(247, 246, 255, 0.065);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .openingLayer {
-    display: none;
-  }
-
-  .heroTitle {
-    clip-path: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
 .contactEndInner .sectionKicker,
 .contactEndInner h2,
 .contactEndInner p {
@@ -1135,14 +1116,16 @@ h1 span {
 }
 
 .contactEnd h2 {
-  max-width: none;
+  max-width: 100%;
   font-size: clamp(46px, 5vw, 72px);
   line-height: 1;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .contactLine {
   display: inline-flex;
+  width: min(562px, 100%);
+  max-width: 100%;
   gap: 1px;
   margin-top: 54px;
   border: 1px solid var(--line);
@@ -1150,18 +1133,16 @@ h1 span {
 }
 
 .contactLine a {
-  min-width: 280px;
+  min-width: 0;
+  flex: 1 1 280px;
   background: rgba(5, 9, 11, 0.88);
   padding: 22px 28px;
   color: #eafffb;
   font-size: 17px;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1280px) {
-  body {
-    min-width: 960px;
-  }
-
   .container {
     width: min(1700px, calc(100% - 56px));
   }
@@ -1206,17 +1187,7 @@ h1 span {
   }
 
   .projectAbout {
-    grid-template-columns: 1fr 360px;
-    gap: 54px;
-    margin-top: 160px;
-  }
-
-  .projectAbout h3 {
-    font-size: 46px;
-  }
-
-  .projectStats strong {
-    font-size: 36px;
+    margin-top: 100px;
   }
 
   .aboutShowcase {
@@ -1233,11 +1204,340 @@ h1 span {
     width: 390px;
   }
 
-  .twoColumn {
-    gap: 52px;
-  }
-
   .timelineItem {
     padding: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .aboutShowcase {
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .aboutFeature {
+    width: 100%;
+  }
+
+  .aboutStats .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutStats .contactGrid a {
+    min-height: 0;
+  }
+
+  .strengthGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .overviewGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sectionHead {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .projectShowcase,
+  .aboutShowcase {
+    width: calc(100% - 40px);
+  }
+
+  .siteHeader {
+    top: 12px;
+    width: calc(100% - 32px);
+    min-height: 58px;
+    padding: 6px 8px;
+  }
+
+  .resumeDownload,
+  .contactButton,
+  nav a {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  nav {
+    gap: 0;
+  }
+
+  .heroFrame {
+    display: flex;
+    min-height: calc(100svh - 80px);
+    flex-direction: column;
+  }
+
+  .heroInner {
+    padding-top: 124px;
+  }
+
+  h1 {
+    font-size: clamp(88px, 20vw, 150px);
+  }
+
+  .heroBottom {
+    position: static;
+    gap: 32px;
+    margin-top: auto;
+    padding: 88px 0 32px;
+  }
+
+  .heroActions {
+    flex-wrap: wrap;
+  }
+
+  .heroReadmeBlock {
+    text-align: left;
+  }
+
+  .heroTagline {
+    max-width: 440px;
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .heroMeta {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    padding: 16px 0 22px;
+    font-size: 12px;
+  }
+
+  .heroMeta span:last-child {
+    flex-basis: 100%;
+  }
+
+  .section,
+  .contactEnd {
+    padding: 90px 0;
+    scroll-margin-top: 90px;
+  }
+
+  .sectionDisplayTitle {
+    top: 30px;
+    left: 20px;
+    max-width: calc(100% - 40px);
+    font-size: clamp(44px, 11vw, 84px);
+  }
+
+  .projectIntro h2,
+  .aboutIntro h2,
+  .sectionHead h2 {
+    font-size: 40px;
+  }
+
+  .projectIntro p:not(.sectionKicker),
+  .sectionHead > p:not(.sectionKicker),
+  .contactEndInner > p:not(.sectionKicker) {
+    font-size: 16px;
+  }
+
+  .projectFilters {
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .projectFilters button {
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .projectBody {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .projectBody h3 {
+    font-size: 26px;
+  }
+
+  .projectAbout {
+    width: min(520px, 100%);
+    margin-top: 64px;
+    text-align: left;
+  }
+
+  .aboutShowcase {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .aboutIntro,
+  .aboutFeature,
+  .aboutStats {
+    grid-column: auto;
+    grid-row: auto;
+    margin-top: 0;
+  }
+
+  .aboutFeature {
+    max-width: 420px;
+  }
+
+  .portraitPanel {
+    height: 360px;
+    min-height: 0;
+  }
+
+  .aboutStats .contactGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .strengthCard {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .strengthCard h3 {
+    margin-top: 32px;
+    font-size: 22px;
+  }
+
+  .contactEnd {
+    min-height: 75svh;
+  }
+
+  .contactEnd h2 {
+    font-size: clamp(32px, 6vw, 46px);
+    line-height: 1.25;
+  }
+
+  .contactLine {
+    flex-wrap: wrap;
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .siteHeader {
+    grid-template-columns: 1fr auto;
+    gap: 4px;
+    border-radius: 22px;
+  }
+
+  .resumeDownload {
+    justify-self: start;
+  }
+
+  .siteHeader nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .contactButton {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  nav a {
+    padding: 9px 14px;
+  }
+
+  .heroInner {
+    padding-top: 160px;
+  }
+
+  .heroActions {
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .primaryButton,
+  .ghostButton {
+    padding: 0 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .heroBottom {
+    padding-top: 64px;
+  }
+
+  .section,
+  .contactEnd {
+    scroll-margin-top: 126px;
+  }
+
+  .sectionKicker {
+    font-size: 11px;
+  }
+
+  .projectFeature,
+  .overviewGrid,
+  .strengthGrid,
+  .aboutStats .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .compactProjectCard .projectBody p {
+    display: block;
+    overflow: visible;
+  }
+
+  .portraitPanel {
+    height: 300px;
+  }
+
+  .aboutCardBody,
+  .aboutStats .timelineItem {
+    padding: 20px;
+  }
+
+  .aboutInfoList p {
+    grid-template-columns: 80px minmax(0, 1fr);
+    font-size: 15px;
+  }
+
+  .contactLine {
+    display: flex;
+    width: 100%;
+  }
+
+  .contactLine a {
+    padding: 20px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .openingLayer {
+    display: none;
+  }
+
+  .heroTitle {
+    clip-path: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .projectCard:hover .projectImage img,
+  .aboutStats .timelineItem:hover,
+  .primaryButton:hover,
+  .ghostButton:hover,
+  .projectFilters button:hover {
+    transform: none;
   }
 }
