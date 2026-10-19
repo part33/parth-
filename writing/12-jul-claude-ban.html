@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic把用户当贼防。 · Parth</title>  <script type="module" crossorigin src="/parth-/assets/content-BCNwrMCI.js"></script>
+  <link rel="stylesheet" crossorigin href="/parth-/assets/content-DVdsqTnG.css">
+</head>
+<body class="reader-page"><a class="skip" href="#reading">跳到正文</a>
+<header class="reader-top"><a class="brand" href="../index.html#home">Parth<span>一个在自我 harness 的 AI 产品经理</span></a>
+<a href="../index.html#articles">返回文章</a></header>
+<progress class="reading-progress" max="1" value="0" aria-label="阅读进度"></progress>
+<div class="reader-layout"><main id="reading" class="reader-main">
+<header class="reader-heading"><p class="meta">产业观察 <span>原稿 2026.07.10 · 约3200字 · 约 11 分钟</span></p>
+<h1>Anthropic把用户当贼防。</h1><p class="reader-deck">7月10日，阿里内部全面禁止Claude Code，“近期发现存在后门风险”——年初公司还鼓励工程师用，半年后从报销到卸载。</p>
+</header>
+<img class="reader-cover" src="/parth-/assets/00-cover.png-Bum8rN9w.webp" width="1200" height="600" alt="Anthropic把用户当贼防。" fetchpriority="high"><div class="reader-body"><h2 id="_1">开场：从报销到卸载，只用了半年</h2>
+<p>2026年初，阿里巴巴还在鼓励工程师用外部AI工具——Claude、GPT、Gemini的订阅公司给报，有团队每周烧掉数百美元的token，Claude Code是最受欢迎的编程工具之一。</p>
+<p>7月10日，一纸内部通知：办公环境全面禁止Claude Code，范围扩大到Anthropic全系模型——Sonnet、Opus、Fable连同Claude Code一起卸载，改用自研Qoder。通知里的措辞经媒体转述是&quot;recently discovered to carry back-door risks&quot;（近期发现存在后门风险），&quot;after comprehensive evaluation&quot;（经综合评估）列入高风险软件名单。</p>
+<p>从&quot;公司请你用&quot;到&quot;公司让你删&quot;，中间只隔了10天。而这10天里发生的事，值得所有做开发者工具、安全功能的PM读三遍。</p>
+<h2 id="aanthropic">A面：Anthropic的防守逻辑</h2>
+<p>先看Anthropic这边。它不是没来由地&quot;使坏&quot;——它有它的战争。</p>
+<p>6月10日，Anthropic致信美国参议院银行委员会，指控与阿里Qwen实验室有关联的运营方，用约2.5万个虚假账号发起了2880万次以上的&quot;蒸馏&quot;交互，目标直指Claude的推理能力。这是背景：当你的模型能力可以被&quot;问&quot;走，防守就成了必答题。</p>
+<p>Anthropic的处境其实值得同情。它可能是全世界被&quot;蒸馏&quot;得最狠的实验室：2月它点名DeepSeek、月之暗面、MiniMax三家，称有2.4万个账户发起了1600万次提取交互；6月又抓到针对阿里Qwen实验室关联方的2880万次。换句话说，它每个月都在失血。埋检测代码，是一个失血过多的人的本能反应——先止血，再谈体面。问题在于，它选了一根&quot;见不得光&quot;的止血带。</p>
+<p>于是有了那个&quot;实验&quot;。3月起，Anthropic在Claude Code客户端里埋了一段检测代码：静默检查用户的代理配置和系统时区，与两份隐藏名单比对。名单约147个实体，阿里、百度、字节、蚂蚁、月之暗面、MiniMax等中国公司和实验室赫然在列。名单经过base64+XOR双层混淆，藏在代码深处，2.1.91版本的release notes里只字未提。</p>
+<p>更精巧的是传输方式——&quot;prompt隐写&quot;。如果时区命中，系统提示词里的日期格式会从<code>2026-06-30</code>变成<code>2026/06/30</code>；&quot;Today&#x27;s date is.&quot;里的撇号会被替换成视觉相同的Unicode字符：正常用户是U+0027，代理命中的是U+2019，中国AI实验室命中的是U+02BC，两者皆中的是U+02B9。四种引号，长得一模一样，含义天差地别。</p>
+<p>站在Anthropic的角度，这套逻辑是自洽的：有人在&quot;偷&quot;我的模型，我埋个检测机制，把&quot;正常使用&quot;和&quot;提取攻击&quot;区分开，有什么问题？</p>
+<p><img src="/parth-/assets/01-claude-anthropic-logo.webp-Q25QE8gx.webp" alt="Claude与Anthropic官方logo" width="600" height="600" loading="lazy" decoding="async"></p>
+<p>6月30日，Reddit用户LegitMichel777把这段代码扒了出来，帖子标题很冲：《Anthropic embedded spyware in Claude Code – and attempted to hide it from you》（Anthropic在Claude Code里埋了间谍软件——还试图瞒着你）。当天，Claude Code团队的工程师Thariq Shihipar在X上回应，承认这是&quot;3月启动的一项实验&quot;，目的是&quot;防止未授权转售商的账号滥用、防范蒸馏&quot;，并表示&quot;团队已经上线了更强的缓解措施，早就想把它下掉了，明天的版本就会完全回滚&quot;。</p>
+<p>7月1日，代码回滚。从曝光到回滚，不到48小时。Anthropic的反应不可谓不快。</p>
+<p>但已经晚了。</p>
+<h2 id="b">B面：阿里眼中的&quot;后门&quot;</h2>
+<p>把视角切到阿里这边。安全团队看到的东西，和Anthropic想表达的东西，完全是两回事。</p>
+<p>安全团队不看&quot;动机&quot;，看&quot;特征&quot;。一段代码，同时具备三个特征：第一，静默运行，用户无感知；第二，混淆隐藏，双层加密，release notes只字不提；第三，针对性名单，147个实体，精准覆盖中国AI公司。<strong>这三个特征摆在一起，就是教科书级别的&quot;后门&quot;画像。</strong> 安全团队不需要知道Anthropic的&quot;苦衷&quot;——看到这样的代码，拉警报是职责所在。</p>
+<p>7月1日，智东西率先披露：阿里内部人士称这段代码是&quot;backdoor…secret channel&quot;（后门……秘密通道），已&quot;经综合评估列入高风险软件名单&quot;。7月3日，中国日报等跟进确认。7月10日，封杀令生效。</p>
+<p><img src="/parth-/assets/02-alibaba-xixi-campus.jpg-D42e2bzV.webp" alt="阿里巴巴杭州西溪园区" width="800" height="600" loading="lazy" decoding="async"></p>
+<p>注意这个因果链：<strong>直接导火索是隐藏代码曝光，不是6月的蒸馏指控。</strong> 很多人会把两件事混为一谈——&quot;Anthropic 6月告阿里的状，阿里7月报复&quot;。错了。时间线很清楚：6月30日代码曝光→7月1日媒体披露→7月10日封杀。阿里封的不是&quot;告状的人&quot;，封的是&quot;在客户端埋代码的人&quot;。</p>
+<p>还有个值得玩味的细节：阿里的通知里，&quot;禁用Claude&quot;和&quot;改用自研Qoder&quot;是写在同一句话里的。安全理由和自主可控，在这里完成了合流——&quot;后门风险&quot;是里子，&quot;自研替代&quot;是面子。这不是阴谋论，而是大公司的标准动作：任何一次外部工具的&quot;安全事件&quot;，都是内部自研工具上位的最佳窗口期。Qoder等这一天，可能等了很久。</p>
+<p><strong>同一行代码，两种读法。&quot;防&quot;和&quot;贼&quot;之间，只差一个知情权。</strong></p>
+<p>对阿里工程师来说，这个转折带着点黑色幽默。年初公司还鼓励大家用——Claude Code装机量最高，token烧得最凶的也是它；年中公司发文让删，删得最彻底的还是它。有工程师调侃：上半年学的Claude Code快捷键，下半年全作废，改学Qoder。这不是简单的工具替换：一个工程师的工作流、心智模型、肌肉记忆，全要重来。&quot;后门&quot;两个字，杀死的不是一段代码，是几千人的生产力惯性。</p>
+<h2 id="_2">判断：信任是安全功能的隐藏成本</h2>
+<p>Shihipar的回应里有一句很诚实的话：&quot;早就想把它下掉了。&quot;说明Anthropic自己也知道这代码见不得光。但&quot;见不得光&quot;恰恰是问题所在。</p>
+<p><strong>安全功能最大的成本不是工程成本，是信任成本。</strong> KYC、设备指纹、行为检测，这些功能本身都没错，错的是&quot;藏&quot;。藏起来的代码一旦曝光，伤害是双倍的：第一层伤害是&quot;你在监视我&quot;，第二层伤害是&quot;你瞒着我监视我&quot;。第二层比第一层致命得多。</p>
+<p>LegitMichel777在帖子里写的那句，值得所有PM背下来：&quot;a fundamental violation of user trust&quot;（对用户信任的根本性违背）。另一位逆向者的评价更值得玩味：&quot;这不是恶意功能，但对一个需要信任的开发者工具来说，是个奇怪的选择。&quot;</p>
+<p>&quot;需要信任的开发者工具&quot;——这句话点破了天机。开发者工具和普通ToC产品不一样：你的用户是能看懂代码的人。你藏的东西，早晚会被扒出来；你瞒的事，早晚会被写成帖子。<strong>对开发者工具来说，&quot;被发现&quot;不是小概率事件，是必然事件。</strong> 安全设计的第一原则应该是：假设所有代码都会被公开，还敢不敢写？</p>
+<p>对比一下开源世界的做法，更有意思。开源模型的&quot;防蒸馏&quot;怎么做？Qwen、DeepSeek的权重就摆在那，谁爱下谁下——它们防的不是&quot;你学我&quot;，而是&quot;你超过我&quot;，靠的是迭代速度，不是围墙。Anthropic的困境恰恰在于：闭源模型的价值建立在&quot;不透明&quot;上，可&quot;不透明&quot;一旦和&quot;不诚实&quot;沾边，整个商业模式的地基都会晃。<strong>闭源卖的是信任，不是参数——参数可以被蒸馏，信任蒸馏不走。</strong></p>
+<p>这也是为什么Anthropic的道歉没起作用。Shihipar的回应其实相当得体：承认、解释、承诺回滚，48小时内兑现。但阿里的封杀令照发不误——因为道歉修复的是&quot;误会&quot;，而阿里看到的不是误会，是&quot;能力&quot;：你有能力在我不知情的情况下监视我，今天你说下掉了，明天你会不会再装一个？我怎么验证？<strong>信任一旦变成&quot;需要验证&quot;的东西，它就已经死了。</strong></p>
+<p><img src="/parth-/assets/03-access-denied.png-BD64excQ.webp" alt="ACCESS DENIED警告" width="640" height="360" loading="lazy" decoding="async">
+<em>示意图，非事件实拍</em></p>
+<h2 id="api">落点：API产品经理的&quot;防偷&quot;备忘录</h2>
+<p>如果把这件事翻译成产品备忘录，它其实是每个做API、做开发者工具的PM迟早要面对的一课：<strong>&quot;防滥用&quot;和&quot;用户信任&quot;是一体两面，你防用户的每一行代码，都在消耗信任。</strong></p>
+<p>三个具体的教训，其实是一个逻辑：安全功能要&quot;明着做&quot;。同样的检测逻辑，写进文档、放在设置里给用户看、给出来源和申诉渠道，它就是&quot;安全功能&quot;；藏在代码里、混淆加密、release notes不提，它就是&quot;后门&quot;。功能一模一样，观感天差地别，区别不在代码，在知情权。</p>
+<p>更深的是信任的记账方式：<strong>信任账户是&quot;慢存快取&quot;。</strong> Anthropic攒了几年的开发者信任——Claude Code是程序员最爱的工具之一——一次曝光，阿里全系禁用。信任的积累按年算，清零按天算。做安全决策时，要把&quot;如果被曝光&quot;写进ROI：省下的蒸馏损失，和丢掉的大客户，哪个贵？这道算术题，Anthropic在7月交了一次学费。</p>
+<p>还有第三层，是关于用户分层的：普通用户不会逆向你的客户端，开发者会；普通用户看了release notes就信了，开发者会去翻diff。服务开发者的产品，透明不是美德，是生存策略。&quot;先上车后补票&quot;的安全策略，对开发者用户每一次都是赌博——而庄家稳赢的局，Anthropic偏要下场。</p>
+<p>复盘一下，如果你是Anthropic当时负责这个&quot;实验&quot;的PM，正确的姿势是什么？三条，全是基本功：第一，公开做——在文档里写清楚&quot;我们为防范滥用会检测代理和时区信号&quot;，给用户知情权和opt-out；第二，给申诉——误伤了正常用户，有地方说理；第三，设期限——&quot;实验&quot;要有实验的样子，写清起止时间和评估标准，而不是无限期静默运行。这三条没有一条是高科技，却是&quot;move fast&quot;的公司最容易跳过的。而跳过的每一项，都在事后变成了呈堂证供。</p>
+<p>说到底，Anthropic没有输在技术上。它的检测机制设计得相当精巧，四种引号的隐写堪称艺术。它输在把用户当成了&quot;需要防范的对象&quot;，而不是&quot;需要告知的伙伴&quot;。<strong>当你把用户当贼防，用户就把你当贼看。</strong> 这句话，贴在每个做风控、做安全的PM工位上都不为过。</p>
+<h2 id="_3">尾声：下掉的代码，删不掉的记忆</h2>
+<p>代码在7月1日就回滚了。但阿里的封杀令没有跟着回滚——7月10日照常生效，全系禁用，改用Qoder。</p>
+<p>这可能是整件事最耐人寻味的一点：<strong>技术问题48小时就能修复，信任问题没有&quot;回滚&quot;按钮。</strong> 代码可以删，记忆删不掉。从&quot;公司报销请你用&quot;到&quot;公司发文让你删&quot;，阿里工程师的Claude Code之旅结束得干脆利落。</p>
+<p>而Anthropic失去的不只是一个大客户。它失去的是&quot;开发者最信任的AI公司&quot;这个称号——而这个称号，恰恰是它区别于OpenAI、Google的最大资产。</p>
+<p>防贼的人，最后成了别人眼中的贼。这个剧本，2026年7月已经上演过一次了。</p>
+<p>对AI产品经理来说，这个案例应该进教科书：技术上满分，产品上零分。Anthropic的工程师做出了当年最精巧的客户端检测方案之一，却输给了最朴素的产品常识——别瞒着用户。2026年7月，Anthropic用一次封杀给全行业上了一课：<strong>在开发者工具这个行当里，透明不是可选项，是入场券。</strong></p></div>
+<footer class="reader-foot"><a href="https://github.com/part33/muse-/blob/ff2811f3e8c6f7031655cecd8e3bc570a5d5baed/content/articles/12-jul-claude-ban/article.md">查看原稿</a></footer>
+<nav class="reader-adjacent" aria-label="相邻文章"><a href="13-aug-deepmind-exodus.html"><span>较新的文章</span><strong>大厂装不下“登月的人”了</strong></a><a href="11-jun-distillation.html"><span>较早的文章</span><strong>2880万次“偷师”。</strong></a></nav>
+<a class="return-link" href="../index.html#articles">回到全部 14 篇文章</a>
+</main><aside class="reader-toc" aria-label="本文目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#_1">开场：从报销到卸载，只用了半年</a></li>
+<li><a href="#aanthropic">A面：Anthropic的防守逻辑</a></li>
+<li><a href="#b">B面：阿里眼中的&quot;后门&quot;</a></li>
+<li><a href="#_2">判断：信任是安全功能的隐藏成本</a></li>
+<li><a href="#api">落点：API产品经理的&quot;防偷&quot;备忘录</a></li>
+<li><a href="#_3">尾声：下掉的代码，删不掉的记忆</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="site-footer"><span>Parth</span><a href="#reading">回到开头 ↑</a></footer></body></html>

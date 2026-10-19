@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2880万次“偷师”。 · Parth</title>  <script type="module" crossorigin src="/parth-/assets/content-BCNwrMCI.js"></script>
+  <link rel="stylesheet" crossorigin href="/parth-/assets/content-DVdsqTnG.css">
+</head>
+<body class="reader-page"><a class="skip" href="#reading">跳到正文</a>
+<header class="reader-top"><a class="brand" href="../index.html#home">Parth<span>一个在自我 harness 的 AI 产品经理</span></a>
+<a href="../index.html#articles">返回文章</a></header>
+<progress class="reading-progress" max="1" value="0" aria-label="阅读进度"></progress>
+<div class="reader-layout"><main id="reading" class="reader-main">
+<header class="reader-heading"><p class="meta">产业观察 <span>原稿 2026.06.25 · 约2300字 · 约 8 分钟</span></p>
+<h1>2880万次“偷师”。</h1><p class="reader-deck">6月10日，Anthropic致信美国参议院银行委员会：“阿里巴巴对Anthropic实施了史上已知最大规模的蒸馏攻击”——2880万次交互、25000个虚假账户、44天、法律上零判决。</p>
+</header>
+<img class="reader-cover" src="/parth-/assets/00-cover.jpg-BBNxkwgz.webp" width="1200" height="800" alt="2880万次“偷师”。" fetchpriority="high"><div class="reader-body"><p>2026年6月10日，Anthropic给美国参议院银行委员会写了一封信。信的开头只有一句话，就够让整个AI圈坐直：</p>
+<p>&quot;Alibaba executed the largest known distillation attack on Anthropic to date.&quot;（阿里巴巴对Anthropic实施了史上已知最大规模的蒸馏攻击。）</p>
+<p>这场&quot;战争&quot;可以用四个数字讲完：2880万，25000，44天，和0。</p>
+<p><img src="/parth-/assets/01-capitol.webp-DSdFNpr5.webp" alt="国会大厦" width="1200" height="900" loading="lazy" decoding="async"></p>
+<h2 id="2880">2880万：史上最大的一次&quot;问问题&quot;</h2>
+<p>先解释&quot;蒸馏&quot;是什么。一句话版本：老师不只给学生正确答案，还把自己对各种可能性的&quot;倾向&quot;告诉学生——学生学到的不只是答案，是老师的解题思路。大模型蒸馏同理：用强模型的输出（尤其是思维链）去训练弱模型，弱模型能站在巨人的肩膀上，跳过最贵的试错。</p>
+<p>技术本身完全合法、中性，各大实验室内部天天用。争议从来不在&quot;蒸馏&quot;，而在&quot;怎么拿到的&quot;。</p>
+<p>Anthropic在信里写道：2026年4月22日到6月5日，阿里巴巴方面通过近25000个虚假账户，与Claude产生了超过2880万次交互，目标直指Claude最值钱的能力——智能体推理、软件工程、长程任务。用Anthropic政策负责人莎拉·赫克的话说，这是&quot;系统性、工业规模地收割美国AI能力，重新包装成自己的，而不用承担训练美国前沿模型所需的研发成本&quot;。</p>
+<p>有开发者算了一笔账：2880万次交互，按每次500个token计，约等于144亿token的训练数据——不足以从零训练一个前沿模型，但足以把Qwen推上原本够不到的台阶。用他的话说：&quot;The attack didn&#x27;t copy Claude. It tutored a competitor.&quot;（这次攻击没有复制Claude，它给竞争对手请了个家教。）</p>
+<p><strong>第一个数字的结论：这不是&quot;学习&quot;，这是&quot;进货&quot;。</strong></p>
+<h2 id="25000">25000：看不见锁的盗窃</h2>
+<p>25000个虚假账户，是这件事最耐人寻味的部分。</p>
+<p>没有密码被盗，没有服务器被攻破。Treblle的安全研究人员把这种手法称为&quot;Hydra architecture&quot;（九头蛇架构）：商业代理服务把API请求从中国（Anthropic禁止接入的地区）经由可接入的司法辖区路由，提取查询混在日常请求里，压平异常信号。</p>
+<p>有评论写得好：&quot;There is a particular kind of theft that leaves no broken lock.&quot;（有一种盗窃，不留撬锁的痕迹。）攻击者只是&quot;使用产品&quot;——几百万次、工业规模地使用——然后带走供应商花了几十亿美元才建成的东西：模型的推理能力本身。</p>
+<p>更微妙的是，这25000个账户是&quot;付费&quot;的。有评论直接开炮：&quot;Alibaba paid Anthropic for the access it used to copy Claude… 28.8 million queries is a paying customer&#x27;s bill, not a break-in.&quot;（阿里为用来复制Claude的访问付了钱……2880万次查询是一张付费客户的账单，不是一次入室盗窃。）</p>
+<p><strong>第二个数字的结论：当&quot;偷&quot;不需要撬锁，&quot;偷&quot;的定义本身就成了战场。</strong></p>
+<p><img src="/parth-/assets/02-forensics.jpg-dkMxkS2O.webp" alt="放大镜" width="1200" height="628" loading="lazy" decoding="async"></p>
+<h2 id="44">44天：写在时间线里的政治</h2>
+<p>4月22日到6月5日，44天。但把时间线拉长，这44天只是一个高潮：</p>
+<ul>
+<li><strong>2月</strong>：Anthropic发博客，首次点名DeepSeek、月之暗面、MiniMax——1600万次交互、2.4万虚假账户。阿里案的规模接近这三家总和的两倍。</li>
+<li><strong>4月</strong>：白宫科技政策办公室发布备忘录，把大规模蒸馏定性为国家安全威胁。Anthropic在信里特意点出：阿里的行动在这份警告发布后仍在继续。</li>
+<li><strong>6月初</strong>：五角大楼把阿里巴巴列入&quot;中国军事企业&quot;名单，阿里起诉要求移出。</li>
+<li><strong>6月10日</strong>：信件发出，赶在6月11日参议院&quot;AI and the American Dream&quot;听证会之前。</li>
+<li><strong>6月24日</strong>：彭博社首爆信件内容，CNBC、当日确认，路透、FT跟进。</li>
+<li><strong>6月25日</strong>：阿里股价单日跌近5%，触及16个月低点。截至当天，阿里巴巴未作实质回应——在6月的视角里，阿里是沉默的。</li>
+</ul>
+<p>注意信的收件人：参议院银行委员会主席和资深成员，外加抄送白宫官员。有评论一句话点破：&quot;The letter did not go to a court or to a regulator. It went to Congress.&quot;（这封信没寄给法院，也没寄给监管机构，它寄给了国会。）</p>
+<p>Anthropic在信里提了三项诉求：美国AI实验室之间共享威胁情报；堵住中国实验室获取先进美国芯片的漏洞；惩罚实施蒸馏攻击的中国实验室。翻译一下：要的不是打官司，是立法和制裁。</p>
+<p><strong>第三个数字的结论：这44天不是技术事件，是政治事件。信是写给国会的，不是写给法官的。</strong></p>
+<h2 id="0">0：法律上的&quot;盗窃&quot;，至今零判决</h2>
+<p>第四个数字是0：截至2026年6月，没有一家法院对&quot;蒸馏攻击&quot;是否构成&quot;盗窃&quot;作出过判决。</p>
+<p>这是整件事最硬的骨头。蒸馏技术本身（2015年Hinton形式化）完全合法；&quot;未经授权的大规模提取&quot;听起来像偷，但法律上&quot;哪一类都不算&quot;：商业秘密法不适用（没逆向内部机理），版权法悬而未决，服务条款违约跨境难执行。有法律分析写道，在某个案子真正走到法官面前之前，&quot;盗窃&quot;描述的是美国实验室希望的故事框架，不是一个被验证过的法律事实。</p>
+<p>反方弹药甚至更辛辣：Anthropic自己刚同意支付15亿美元，和解了一起&quot;用盗版书训练Claude&quot;的版权案——&quot;Anthropic built Claude by taking the world&#x27;s writing for free.&quot;（Anthropic免费拿了全世界的文字来建造Claude。）原告变被告，只用了不到一年。</p>
+<p>而务实派的观点来自产业一线：&quot;反蒸馏是个伪命题，更现实的目标是提高对手的数据采集成本，拖慢竞争对手。&quot;以及：&quot;商业逻辑比技术逻辑更重要。&quot;——与其在法庭上争&quot;这是不是偷&quot;，不如在工程上让&quot;偷&quot;变贵。</p>
+<p><strong>第四个数字的结论：法律给不出答案的时候，答案就由权力给出。</strong></p>
+<p><img src="/parth-/assets/03-server.jpg-BiGAqc89.webp" alt="服务器" width="1200" height="800" loading="lazy" decoding="async"></p>
+<h2 id="api">落点：API产品经理的&quot;防偷&quot;课</h2>
+<p>如果把这件事翻译成产品问题，它其实是每个API产品经理的噩梦：<strong>你的大客户，可能是来&quot;进货&quot;的。</strong></p>
+<p>2880万次付费调用，在账单上看就是个优质大客户——直到你发现他在&quot;学习&quot;你。传统的风控看的是&quot;异常&quot;，但&quot;Hydra架构&quot;把提取查询混在日常请求里，异常信号被压平了。防得住脚本，防不住&quot;正常使用&quot;。这意味着API产品的风控逻辑要重写：从&quot;识别坏人&quot;变成&quot;识别行为模式&quot;，从看单次请求变成看长期轨迹。</p>
+<p>这里有个产品哲学问题：<strong>开放和防守，是一体两面。</strong> API越好用，越容易被&quot;学习&quot;；风控越严，正常用户越难受。Anthropic的三件套（封号、藏思维链、KYC）本质上是在&quot;好用&quot;和&quot;安全&quot;之间找平衡点——而平衡点本身，就是产品决策。没有标准答案，只有取舍。</p>
+<p>更深的一层，是务实派那句话：&quot;反蒸馏是个伪命题，更现实的目标是提高对手的数据采集成本。&quot;翻译成产品语言：<strong>别想着造出偷不走的东西，要造出&quot;偷起来不划算&quot;的东西。</strong> 护城河不是高墙，是让翻墙的成本高于绕路的成本。做API产品的人都该把这句话贴在墙上。</p>
+<h2 id="_1">尾声：比赛变了</h2>
+<p>eWeek有一句话，适合当这篇的结尾：&quot;The AI race is no longer only about who can build the strongest model. It is also about who can stop rivals from copying one.&quot;（AI竞赛不再只是比谁造出最强的模型，还要比谁能阻止对手复制。）</p>
+<p>2880万次交互、25000个虚假账户、44天、0份判决——四个数字，一场战争。这场战争打的不是技术，是&quot;AI的知识到底是谁的&quot;。</p>
+<p>而这个问题，6月没有答案。法庭没判，国会还没立法，阿里还沉默着。但所有人都看明白了一件事：当模型的能力可以被&quot;问&quot;走，护城河就从&quot;造得多强&quot;变成了&quot;藏得多好&quot;。</p>
+<p>下半场，拼的是谁更会藏。</p></div>
+<footer class="reader-foot"><a href="https://github.com/part33/muse-/blob/ff2811f3e8c6f7031655cecd8e3bc570a5d5baed/content/articles/11-jun-distillation/article.md">查看原稿</a></footer>
+<nav class="reader-adjacent" aria-label="相邻文章"><a href="12-jul-claude-ban.html"><span>较新的文章</span><strong>Anthropic把用户当贼防。</strong></a><a href="10-jun-licensing-layer.html"><span>较早的文章</span><strong>美国政府开始审批AI发布了。</strong></a></nav>
+<a class="return-link" href="../index.html#articles">回到全部 14 篇文章</a>
+</main><aside class="reader-toc" aria-label="本文目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#2880">2880万：史上最大的一次&quot;问问题&quot;</a></li>
+<li><a href="#25000">25000：看不见锁的盗窃</a></li>
+<li><a href="#44">44天：写在时间线里的政治</a></li>
+<li><a href="#0">0：法律上的&quot;盗窃&quot;，至今零判决</a></li>
+<li><a href="#api">落点：API产品经理的&quot;防偷&quot;课</a></li>
+<li><a href="#_1">尾声：比赛变了</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="site-footer"><span>Parth</span><a href="#reading">回到开头 ↑</a></footer></body></html>

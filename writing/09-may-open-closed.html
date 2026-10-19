@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开源先发牌，闭源后加价。 · Parth</title>  <script type="module" crossorigin src="/parth-/assets/content-BCNwrMCI.js"></script>
+  <link rel="stylesheet" crossorigin href="/parth-/assets/content-DVdsqTnG.css">
+</head>
+<body class="reader-page"><a class="skip" href="#reading">跳到正文</a>
+<header class="reader-top"><a class="brand" href="../index.html#home">Parth<span>一个在自我 harness 的 AI 产品经理</span></a>
+<a href="../index.html#articles">返回文章</a></header>
+<progress class="reading-progress" max="1" value="0" aria-label="阅读进度"></progress>
+<div class="reader-layout"><main id="reading" class="reader-main">
+<header class="reader-heading"><p class="meta">产业观察 <span>原稿 2026.05.28 · 约1400字 · 约 5 分钟</span></p>
+<h1>开源先发牌，闭源后加价。</h1><p class="reader-deck">2026年5月底的AI牌桌：DeepSeek把V4-Pro永久降价75%，Anthropic把Opus 4.8定在$5/$25一分不差——一边放血，一边加价。</p>
+</header>
+<img class="reader-cover" src="/parth-/assets/00-cover.jpg-CHw9_Sbo.webp" width="1200" height="800" alt="开源先发牌，闭源后加价。" fetchpriority="high"><div class="reader-body"><p>2026年5月底的AI牌桌上，出现了戏剧性的一幕：同一周，DeepSeek把V4-Pro的价格砍掉75%，Anthropic把Opus 4.8的价格定在$5/$25——和上一代一分不差。</p>
+<p>一边放血，一边加价。这局牌，开源先发的，闭源后到的。</p>
+<p><img src="/parth-/assets/01-poker.jpg-BvEwS8js.webp" alt="扑克牌" width="675" height="1200" loading="lazy" decoding="async"></p>
+<h2 id="4">第一轮：4月，开源连发四张牌</h2>
+<p>先把牌摆出来。注意时间——这四张牌发在4月，不是5月：</p>
+<ul>
+<li>3月18日，MiniMax官宣M2.7；4月12日权重上线</li>
+<li>4月7日，Z.ai的GLM-5.1开放权重（MIT协议）</li>
+<li>4月20日，月之暗面Kimi K2.6</li>
+<li>4月24日，DeepSeek V4预览版同步开源</li>
+</ul>
+<p>4月7日到4月24日，17天，四张牌。张张都是冲着agentic coding去的：GLM-5.1号称能跑1700步长程任务，K2.6连续编码13小时、300个子Agent并行，V4-Pro 16000亿参数（49B激活）、SWE-bench Verified 80.6%。</p>
+<p>英文社区的反应是&quot;震惊体&quot;。有开发者写道，一个中国公司的开放权重模型，在生产级工程基准上和OpenAI最好的代码模型打平——&quot;这事本不该来得这么快。&quot;（&quot;That wasn&#x27;t supposed to happen this fast.&quot;）</p>
+<p>但牌桌上有个插曲：M2.7的许可证。Hugging Face上有帖子直接开喷——&quot;看得见权重的私有代码，算哪门子开源&quot;。MiniMax的开发者关系负责人罕见地说了实话：第三方托管商部署了劣化版本，败坏了口碑，&quot;人家用完觉得MiniMax不过如此&quot;（&quot;They walk away thinking MiniMax is mid.&quot;）——改许可证是防御性收紧。</p>
+<p><strong>第一轮的结论：开源的牌发出去了，但&quot;开源&quot;两个字本身，第一次被认真盘问。</strong></p>
+<h2 id="5deepseek">第二轮：5月，DeepSeek直接掀桌</h2>
+<p>5月底，DeepSeek宣布V4-Pro永久降价75%。</p>
+<p>注意&quot;永久&quot;两个字。这不是促销，是定价权的宣示。缓存命中的输入价打到0.025元/百万token——这个价格，闭源厂商看一眼都得摇头。</p>
+<p>有意思的对照：智谱选择&quot;止血&quot;、恢复原价；DeepSeek选择&quot;放血&quot;、永久降价。资本结构决定定价打法——要利润表的，收；要生态位的，放。</p>
+<p><strong>第二轮的结论：开源打完了技术牌，开始打价格牌。牌桌从&quot;谁更聪明&quot;变成&quot;谁更便宜&quot;。</strong></p>
+<p><img src="/parth-/assets/02-code.jpg-B9rgxViv.webp" alt="代码" width="1200" height="800" loading="lazy" decoding="async"></p>
+<h2 id="528">第三轮：5月28日，闭源亮出底牌</h2>
+<p>同一周，Anthropic发布Opus 4.8：$5/$25，和Opus 4.7一分不差。</p>
+<p>这就是&quot;加价&quot;——不是涨价，是&quot;拒绝降价&quot;。在开源把价格打到脚踝的时候，闭源旗舰选择原地不动。Anthropic的底气是：Fast Mode（2.5倍速、1/3价格）、Dynamic Workflows（1000个并行子Agent）、诚实性改进（代码缺陷漏检降到之前的1/4）。</p>
+<p>但第三方实测泼了盆冷水：有基准显示，GPT-5.5在真实长程工程任务里领先Opus 16分——&quot;公开benchmark看不出的差距&quot;。也就是说，Opus 4.8的&quot;加冕&quot;，加的是价格，不是断层领先。</p>
+<p><strong>第三轮的结论：闭源的底牌是&quot;我不跟你拼便宜，我拼的是你还做不到的事&quot;——但这张底牌，正在变薄。</strong></p>
+<h2 id="pm">落点：PM的选型三角</h2>
+<p>如果把这局牌翻译成PM的日常，它其实是个选型问题：开源还是闭源？5月给出了一个清晰的决策三角。</p>
+<p><strong>性能看差距，成本看量级，可控看命门。</strong> 性能差距在缩小——4月的四张牌证明了，benchmark上的&quot;代差&quot;正在变成&quot;档差&quot;。成本差距在拉大——75%降价对原地不动，账单不会说谎。可控性差距是本质——权重拿在自己手里，谁也拿不走；API可是随时能涨价、下线、撤回的。当性能打平时，选开源；当业务命悬一线、要的是&quot;出问题有人兜底&quot;时，买闭源的保险；当用量大到账单刺眼时，闭源的税就交不起了。</p>
+<p>更狠的一层是：<strong>选型不是一次性决策，是动态再平衡。</strong> 4月你可能因为性能选闭源，5月因为降价切开源，6月因为管制又得备两套。PM的模型选型表，应该像基金组合一样定期再平衡——而不是&quot;选定一家，从一而终&quot;。把&quot;可迁移&quot;写进架构设计，比选对一次模型重要十倍。</p>
+<p>说到底，开源先发牌，闭源后加价，拼的都不是牌，是牌桌。PM要看的也不是谁赢了这一局，而是：<strong>下一局开牌时，我的手里有没有得选。</strong></p>
+<p><img src="/parth-/assets/03-datacenter.jpg-DWpAdRP6.webp" alt="数据中心" width="1200" height="722" loading="lazy" decoding="async"></p>
+<h2 id="_1">尾声：发牌的人，决定不了牌局</h2>
+<p>这局牌最有意思的地方在于：先发牌的（开源），决定不了牌局的走向；后亮牌的（闭源），也决定不了。决定牌局的是牌桌本身——当开放权重成为企业的备选方案，当&quot;最聪明的软件&quot;开始论斤卖，游戏规则就变了。</p>
+<p>开源先发牌，闭源后加价。但牌局进入下半场，拼的既不是谁先发，也不是谁定价高，而是：<strong>当所有人都有好牌时，谁的牌桌更大。</strong></p>
+<p>DeepSeek赌的是生态，Anthropic赌的是差距，OpenAI赌的是用户。三张牌，三种赌法。5月的牌局，只是开场。</p></div>
+<footer class="reader-foot"><a href="https://github.com/part33/muse-/blob/ff2811f3e8c6f7031655cecd8e3bc570a5d5baed/content/articles/09-may-open-closed/article.md">查看原稿</a></footer>
+<nav class="reader-adjacent" aria-label="相邻文章"><a href="10-jun-licensing-layer.html"><span>较新的文章</span><strong>美国政府开始审批AI发布了。</strong></a><a href="08-may-knowledge-base.html"><span>较早的文章</span><strong>AI越强，知识库越值钱。</strong></a></nav>
+<a class="return-link" href="../index.html#articles">回到全部 14 篇文章</a>
+</main><aside class="reader-toc" aria-label="本文目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#4">第一轮：4月，开源连发四张牌</a></li>
+<li><a href="#5deepseek">第二轮：5月，DeepSeek直接掀桌</a></li>
+<li><a href="#528">第三轮：5月28日，闭源亮出底牌</a></li>
+<li><a href="#pm">落点：PM的选型三角</a></li>
+<li><a href="#_1">尾声：发牌的人，决定不了牌局</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="site-footer"><span>Parth</span><a href="#reading">回到开头 ↑</a></footer></body></html>

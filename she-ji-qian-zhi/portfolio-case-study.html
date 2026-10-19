@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="一个为 Codex 设计的中文工作流 Skill：在实现之前，完成需求澄清、方案比较与设计确认。"><title>设计前置 · Parth</title>
+<link rel="stylesheet" href="../case-editorial.css"><script src="../case-editorial.js" defer></script></head>
+<body class="case-page case-she-ji-qian-zhi"><a class="skip-link" href="#case-body">跳到正文</a>
+<header class="case-nav"><a class="brand" href="../#projects" data-home>Parth</a><a href="../#projects" data-home>返回项目</a></header>
+<main><section class="case-hero" aria-labelledby="case-title"><div class="hero-name">设计前置</div>
+<div class="hero-layout"><div class="hero-copy"><h1 id="case-title">把动手之前的判断，<br>变成一种工作方式。</h1><p class="hero-summary">一个为 Codex 设计的中文工作流 Skill：在实现之前，完成需求澄清、方案比较与设计确认。</p>
+<a class="source-link" href="https://github.com/part33/skillskills" target="_blank" rel="noopener noreferrer">查看源码 <span aria-hidden="true">↗</span></a></div>
+<div class="hero-study" aria-label="设计前置工作流概览"><div class="design-options"><span>方案 A</span><span class="chosen">推荐方案</span><span>方案 C</span></div><div class="design-verdict"><small>实现之前</small><strong>先对齐判断</strong><span>目标 / 约束 / 取舍</span></div><div class="flow-origin design-confirm">确认后，进入实现</div></div></div>
+<div class="hero-foot"><span>工作流实践</span><p>AI 干活，人拍板</p><a href="#case-body" aria-label="阅读项目详情">↓</a></div></section>
+<div class="case-layout" id="case-body"><aside class="case-toc"><nav aria-label="案例目录"><a href="#problem">问题</a><a href="#workflow">两种模式</a><a href="#artifacts">项目结构</a><a href="#usage">使用方式</a><a href="#boundary">当前实现</a></nav></aside><div class="case-content"><section class="case-section" id="problem"><h2>少一点返工，<br>从动手之前开始。</h2><div class="section-body"><p>复杂任务如果直接进入实现，目标、范围和方案上的分歧会在开发过程中逐步暴露。设计前置把“先想清楚，再动手”整理为可复用的中文 Codex Skill。</p><div class="decision-list"><article><h3>先理解上下文</h3><p>先了解现有项目与约束，再进入需求澄清。</p></article><article><h3>一次问清一个关键点</h3><p>逐步补齐关键决策信息，降低沟通负担。</p></article><article><h3>给出选择与依据</h3><p>默认比较 2–3 种方案，并明确推荐理由。</p></article></div></div></section><section class="case-section" id="workflow"><h2>按复杂度，<br>选择工作深度。</h2><div class="section-body"><div class="decision-list"><article><h3>轻量模式</h3><p>适合简单任务，快速对齐目标、约束和推荐方案。</p></article><article><h3>完整模式</h3><p>适合复杂任务，覆盖需求澄清、方案比较、设计输出和实现前确认。</p></article></div><ol class="stage-list"><li><span>01</span><div><h3>读取上下文</h3><p>了解代码、配置与现有实现。</p></div></li><li><span>02</span><div><h3>澄清目标</h3><p>明确问题、约束和范围。</p></div></li><li><span>03</span><div><h3>比较方案</h3><p>提出候选方案，并说明取舍。</p></div></li><li><span>04</span><div><h3>确认设计</h3><p>用户确认后，再进入实现阶段。</p></div></li></ol></div></section><section class="case-section" id="artifacts"><h2>让习惯可复用</h2><div class="section-body"><p>项目采用标准 Skill 目录，分开存放工作规则、展示元数据与参考材料。</p><pre><code>she-ji-qian-zhi/
+  SKILL.md
+  agents/openai.yaml
+  references/
+    example-requests.md
+    output-templates.md
+    visual-companion.md</code></pre><div class="decision-list"><article><h3>工作规则</h3><p>SKILL.md 定义轻量与完整模式、触发示例和实施前确认。</p></article><article><h3>配套材料</h3><p>参考文件提供请求示例、输出模板与视觉辅助说明。</p></article></div></div></section><section class="case-section" id="usage"><h2>从一个真实任务开始</h2><div class="section-body"><pre><code>Use $she-ji-qian-zhi
+帮我先梳理一个个人项目方案</code></pre><p>适用于新项目规划、新功能设计、范围拆分、方案比较和设计文档起草。</p></div></section><section class="case-section" id="boundary"><h2>当前实现</h2><div class="section-body"><p>仓库包含实际 Skill、元数据、参考文件与案例页，通过工作流约束协作过程。返工率、效率提升与用户规模尚无可用于展示的验证数据。</p></div></section></div></div>
+<a class="next-case" href="../article-pipeline/index.html"><span>下一个案例</span><strong>Article Harness</strong><span aria-hidden="true">↗</span></a></main>
+<footer><a href="../#projects" data-home>回到个人coding</a><span>Parth</span></footer></body></html>

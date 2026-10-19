@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="以 Markdown 为核心的文章工作流设计：整理素材、明确规划、写出主稿，再完成渲染与审查。"><title>Article Harness · Parth</title>
+<link rel="stylesheet" href="../case-editorial.css"><script src="../case-editorial.js" defer></script></head>
+<body class="case-page case-article-pipeline"><a class="skip-link" href="#case-body">跳到正文</a>
+<header class="case-nav"><a class="brand" href="../#projects" data-home>Parth</a><a href="../#projects" data-home>返回项目</a></header>
+<main><section class="case-hero" aria-labelledby="case-title"><div class="hero-name">Article Harness</div>
+<div class="hero-layout"><div class="hero-copy"><h1 id="case-title">文章有自己的结构。<br>生成也应该有。</h1><p class="hero-summary">以 Markdown 为核心的文章工作流设计：整理素材、明确规划、写出主稿，再完成渲染与审查。</p>
+<a class="source-link" href="https://github.com/part33/-skills" target="_blank" rel="noopener noreferrer">查看源码 <span aria-hidden="true">↗</span></a></div>
+<div class="hero-study" aria-label="Article Harness工作流概览"><div class="manuscript"><small>内容真身</small><strong>article.md</strong><span>整理素材
+写作规划
+正文主稿</span></div><div class="rendered-sheet"><small>展示产物</small><strong>article.html</strong><i></i><i></i><i></i><span>目录 · 摘要 · 正文</span></div></div></div>
+<div class="hero-foot"><span>工作流实践</span><p>AI 干活，人拍板</p><a href="#case-body" aria-label="阅读项目详情">↓</a></div></section>
+<div class="case-layout" id="case-body"><aside class="case-toc"><nav aria-label="案例目录"><a href="#problem">问题</a><a href="#workflow">流程演示</a><a href="#decisions">设计取舍</a><a href="#boundary">当前实现</a></nav></aside><div class="case-content"><section class="case-section" id="problem"><h2>先保留事实，<br>再组织表达。</h2><div class="section-body"><p>直接从零散素材生成成品，容易把内容判断、文章结构与页面排版混在一起。这套案例把素材、规划、正文和展示拆开，用中间文件保留每一步的依据。</p></div></section><section class="case-section" id="workflow"><h2>五个阶段，<br>一份内容真身。</h2><div class="section-body"><p>切换阶段，查看中间文件与产物示例。这里演示工作流结构，不会调用 AI 生成新文章。</p><div class="workflow-demo"><div class="tab-list" role="tablist" aria-label="文章工作流阶段"><button id="tab-source" role="tab" aria-controls="panel-source" aria-selected="true" tabindex="0">01<span>素材</span></button><button id="tab-plan" role="tab" aria-controls="panel-plan" aria-selected="false" tabindex="-1">02<span>规划</span></button><button id="tab-draft" role="tab" aria-controls="panel-draft" aria-selected="false" tabindex="-1">03<span>主稿</span></button><button id="tab-render" role="tab" aria-controls="panel-render" aria-selected="false" tabindex="-1">04<span>渲染</span></button><button id="tab-review" role="tab" aria-controls="panel-review" aria-selected="false" tabindex="-1">05<span>审查</span></button></div><div class="tab-panel" id="panel-source" role="tabpanel" aria-labelledby="tab-source" tabindex="0" ><h3>素材整理</h3><p>系统先把输入统一整理成稳定事实底稿，而不是直接开始生成。</p><details open><summary>输入示例</summary><pre><code>来源：一篇关于 AI 文章生成系统的说明材料
+输入类型：Markdown / URL 摘要 / 纯文本整理</code></pre></details><details open><summary>source.md</summary><pre><code># 素材底稿
+
+文章生成流水线是一套以 Markdown 为核心的文章生产工作流。
+
+系统目标是把原始素材转成：
+- 一份可继续编辑的 Markdown 主稿
+- 一份可直接分享的 HTML 成品
+
+核心流程：
+1. 统一整理原始素材
+2. 规划文章类型、读者与结构
+3. 用 Markdown 完成正文起稿
+4. 渲染生成 HTML
+5. 分开检查内容与展示
+6. 只修最小失败单元
+
+支持的文章类型：
+- 解释型
+- 教程型
+- 评测型
+- 简报型
+- 长文型
+
+核心设计原则：
+Markdown 是内容真身，HTML 是展示层。</code></pre></details></div><div class="tab-panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" tabindex="0" hidden><h3>写作规划</h3><p>生成前先写规划文档，明确文章类型、结构、保留策略和审查重点。</p><details open><summary>plan.md</summary><pre><code># 写作规划
+
+## 文章类型
+解释型
+
+选择原因：
+这份素材的目标是介绍一套系统及其设计逻辑，所以核心任务是把它讲清楚。
+
+未选择的相近类型：
+- 教程型：它不是操作步骤说明
+- 评测型：它不是以比较和评价为核心
+
+## 目标读者
+面试官、工程师，以及希望快速理解系统结构的产品型读者。
+
+## 信息保留策略
+中高保留。
+保留流程、文件结构和设计决策。
+压缩重复解释。
+
+## 核心结论
+文章生成流水线把一次性提示词生成文章，变成了一套受控的生产流程。
+
+## 大纲
+1. 这套系统解决了什么问题
+2. 为什么 Markdown 是内容真身
+3. 从素材到交付的流程
+4. 为什么审查要拆成两层
+5. 为什么它是流程框架，而不只是模板
+
+## 语气
+清楚、结构化、偏技术，但仍然可读。
+
+## HTML 策略
+只做轻量增强：
+- Hero
+- 摘要区
+- 目录
+- 提示块
+- 代码高亮
+
+## 审查重点
+- 流程顺序是否讲清楚
+- Markdown 优先原则是否明确
+- 是否清楚区分了内容层和展示层</code></pre></details></div><div class="tab-panel" id="panel-draft" role="tabpanel" aria-labelledby="tab-draft" tabindex="0" hidden><h3>正文起稿</h3><p>Markdown 是正文真身，HTML 只是从这里渲染出来的展示层。</p><details open><summary>article.md</summary><pre><code>---
+title: 文章生成流水线
+subtitle: 一套以 Markdown 为核心的结构化文章生产工作流
+article_type: 解释型
+audience: 面试官与工程师
+language: zh-CN
+retention: 中高保留
+toc: true
+summary: 一套把原始素材整理成 Markdown 主稿，再渲染成可分享 HTML 文章的可复用流程。
+theme: technical
+---
+
+# 文章生成流水线
+
+文章生成流水线是一套通用文章生产工作流。它不依赖一次性提示词，而是把整个过程拆成素材整理、规划、起稿、渲染、审查和修补。
+
+## 为什么 Markdown 优先
+
+核心设计决策是让 Markdown 成为内容真身。这样文章既可编辑，也可迁移，还可以复用于不同发布环境。
+
+## 从素材到交付
+
+这套流程会先把原始素材整理成稳定事实底稿，再生成规划文档，明确文章类型、读者、保留策略和结构，然后才开始写正文主稿并渲染成 HTML。
+
+## 为什么它是流程框架
+
+这套系统不只是生成文字，它通过中间状态文件、审查步骤和修补规则来管理整个生成过程。</code></pre></details></div><div class="tab-panel" id="panel-render" role="tabpanel" aria-labelledby="tab-render" tabindex="0" hidden><h3>成品渲染</h3><p>article.html 由 article.md 渲染生成。HTML 层负责目录、摘要区、代码高亮和排版增强，但不改写正文结构。</p><div class="render-example"><small>article.html · 排版示例</small><h4>文章生成流水线</h4><p>用中间状态文件组织内容生产。</p><hr><h5>为什么 Markdown 优先</h5><p>正文独立保存，便于继续编辑与迁移；HTML 负责目录、摘要和阅读层级。</p><h5>从素材到交付</h5><p>先整理事实，再制定结构，随后起稿与渲染。内容审查与展示审查分别进行。</p></div></div><div class="tab-panel" id="panel-review" role="tabpanel" aria-labelledby="tab-review" tabindex="0" hidden><h3>审查与修补</h3><p>系统把内容问题和展示问题拆开检查，而不是混在一起返工。</p><details open><summary>初稿审查</summary><pre><code>状态：通过，但有小幅修改
+
+检查项：
+- 文章类型和素材是否匹配
+- Markdown 优先原则是否讲清楚
+- 流程顺序是否容易理解
+- 解释型文章的信息保留是否合理
+
+已修复：
+- 缩短了引言中的重复解释
+- 补清了主稿层和渲染层的区别</code></pre></details><details open><summary>终稿审查</summary><pre><code>状态：通过
+
+检查项：
+- 标题层级是否清晰
+- 目录是否有用
+- 摘要是否在正文前足够显眼
+- HTML 展示是否提升阅读体验而不扭曲原意
+
+已修复：
+- 拉开了 section 之间的间距
+- 提高了元信息标签的对比度</code></pre></details></div></div></div></section><section class="case-section" id="decisions"><h2>把内容和展示分开</h2><div class="section-body"><div class="decision-list"><article><h3>Markdown 是内容真身</h3><p>正文独立保存，便于编辑、迁移和复用；HTML 只负责阅读展示。</p></article><article><h3>规划先于起稿</h3><p>先确定文章类型、目标读者、信息保留策略与结构，再开始写作。</p></article><article><h3>分开两层审查</h3><p>初稿审查处理内容问题，终稿审查处理展示问题，修复对应环节。</p></article><article><h3>统一流程，按类型调整</h3><p>在相同主流程下，规划解释、教程、评测、简报和长文的不同结构。</p></article></div></div></section><section class="case-section" id="boundary"><h2>当前实现</h2><div class="section-body"><p>当前仓库主要提供项目说明、React 案例展示页与流程样例。页面中的中间文件是演示内容，不代表仓库已经包含可自动执行整条生成链路的引擎。</p></div></section></div></div>
+<a class="next-case" href="../pm-harness/index.html"><span>下一个案例</span><strong>PM Harness</strong><span aria-hidden="true">↗</span></a></main>
+<footer><a href="../#projects" data-home>回到个人coding</a><span>Parth</span></footer></body></html>
